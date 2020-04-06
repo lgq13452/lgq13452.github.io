@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div class="box">
+        <!-- 头部 -->
+        <header></header>
+        <!-- 内容区 -->
+        <div class="content">
+            <!-- 侧边栏 -->
+            <aside>
+                <nav>
+                    <span class="active" data-index="default-list" data-count="defaultCount">本地列表</span>
+                    <span data-index="recentSong" data-count="recentCount">最近播放</span>
+                    <span data-index="likeSong" data-count="likeCount">我的歌单</span>
+                </nav>
+                <!-- 歌曲列表 -->
+                <div class="default-list show">
+                    <!-- <div class="default-list-item">
+                            <div class="song-info">
+                                <div class="singer-name"></div>
+                                <span><img src="./image.png" ></span>
+                                <div class="song-time">04:18</div>
+                            </div>
+                        </div>                   -->
+                </div>
+                <div class="recentSong">
+                </div>
+                <div class="likeSong">
+                </div>
+            </aside>
+            <section class="main">
+                <section class="main-content">
+                    <nav>
+                        <span class="mv">MV</span>
+                        <span class="lrc active">歌词</span>
+                    </nav>
+                    <div class="box">
+                        <!-- 歌词 -->
+                        <div class="song-word">
+                            <ul class="song-word-list">
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <footer>
+            <audio id="audio" src="" preload></audio>
+            <div class="controls">
+                <div class="a1 controls-icons">
+                    <div class="prev"></div>
+                    <div id="play-pause" class="play-pause" data-play="0">
+                        <div class="start"></div>
+                        <div class="stop"></div>
+                    </div>
+                    <div class="next"></div>
+                </div>
+                <div class="a2">
+                    <div class="singer-name"></div>
+                    <div class="progress">
+
+                        <div class="progress-notactive">
+                            <!-- 激活层 -->
+                            <div class="progress-active"></div>
+
+                            <!-- 滑块 -->
+                            <div class="mask"></div>
+
+                        </div>
+
+                        <!-- 绑定事件层 -->
+                        <div class="layer"></div>
+
+                    </div>
+                </div>
+                <div class="a3">
+                    <div class="speed">倍速</div>
+                    <div class="time">
+                        <span id="cu">00:00</span> /
+                        <span id="du">00:00</span>
+                    </div>
+                </div>
+                <div class="a4">
+                    <div class="iconright">
+                        <div class="like"> <img class="auto-img" src="./images/like1.png" alt=""></div>
+                        <div class="broadcast-mode" name="0" title="列表循环">
+                            <img class="auto-img" src="./images/liebiao.png" alt="">
+                        </div>
+                        <div class="volume">
+                            <img class="auto-img" src="./images/volume.png" alt="">
+                        </div>
+                        <div class="lrc">
+                            <img class="auto-img" src="./images/ci.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
