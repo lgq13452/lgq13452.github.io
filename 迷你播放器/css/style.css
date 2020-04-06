@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h3,
+h5 {
+  margin: 0;
+}
+.player {
+  width: 500px;
+}
+.player .musicbox {
+  display: flex;
+  padding: 25px;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 0 15px 0 gray;
+}
+.player .musicbox .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("http://p1.music.126.net/-EV4XhJEJn_Ib7ebS1OHhg==/109951164820593469.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.6);
+  transform: scale(1.2);
+  z-index: 0;
+}
+.player .musicbox .record {
+  width: 130px;
+  height: 130px;
+  background-image: url("https://www.17sucai.com/preview/1160620/2018-10-11/Music-player/images/cd.png");
+  background-size: 100%;
+  padding: 25px;
+  box-sizing: border-box;
+  animation: myrotate 6s linear infinite;
+  animation-play-state: paused;
+}
+.player .musicbox .record img {
+  width: 100%;
+  border-radius: 50%;
+}
+.player .musicbox .finger {
+  width: 25px;
+  background: url("https://www.17sucai.com/preview/1160620/2018-10-11/Music-player/images/cd_tou.png") no-repeat;
+  background-size: 100%;
+  margin-left: -10px;
+  transform-origin: 15px 10px;
+  transform: rotate(-15deg);
+  transition: all 0.3s;
+}
+.player .musicbox .musicinfo {
+  flex: 1;
+  margin-left: 15px;
+  color: white;
+  z-index: 1;
+}
+.player .musicbox .musicinfo .contral {
+  display: flex;
+}
+.player .musicbox .musicinfo .contral img {
+  width: 32px;
+  margin: 5px;
+}
+.player .musicbox .musicinfo .progress {
+  position: relative;
+}
+.player .musicbox .musicinfo .progress .bg {
+  width: 290px;
+  top: 10px;
+  height: 7px;
+  background-color: grey;
+  border-radius: 5px;
+  position: absolute;
+}
+.player .musicbox .musicinfo .progress .smask {
+  width: 2px;
+  top: 10px;
+  height: 7px;
+  background-color: red;
+  border-radius: 5px;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.player .musicbox .musicinfo .progress input[type='range'] {
+  width: 100%;
+  opacity: 0;
+}
+.player.playing .musicbox .record {
+  animation-play-state: running;
+}
+.player.playing .musicbox .finger {
+  transform: rotate(5deg);
+}
+.player ul li {
+  margin-top: 10px;
+  padding-left: 5px;
+  border-radius: 10px;
+}
+.player ul li.active {
+  background-color: red;
+}
+@keyframes myrotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=./style.css.map */
