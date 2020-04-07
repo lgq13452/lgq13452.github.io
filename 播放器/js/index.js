@@ -244,7 +244,6 @@ $(function () {
     $.ajax({
       type: 'get',
       url: url,
-      dataType: "jsonp",
       success: function (data) {
         console.log('data ==> ', data);
         var lrcData = data.split('\n[');
@@ -728,7 +727,6 @@ $(function () {
         id: 141998290,
         format: 1
       },
-      dataType: "jsonp",
       //请求成功后执行回调函数
       success: function (data) {
         // console.log('data ==>', data);
