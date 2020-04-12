@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: '微软雅黑'
+        }
+
+        #container {
+            width: 450px;
+            height: 700px;
+            background: #eee;
+            margin: 40px auto 0;
+            position: relative;
+            box-shadow: 20px 20px 55px #777;
+        }
+
+        .header {
+            background: #000;
+            height: 40px;
+            color: #fff;
+            line-height: 34px;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        .header span:last-child {
+            float: right;
+        }
+
+        .footer {
+            width: 430px;
+            height: 50px;
+            background: #666;
+            position: relative;
+            bottom: 0;
+            padding: 10px;
+        }
+
+
+        .footer textarea {
+            width: 360px;
+            height: 45px;
+            line-height: 45px;
+            padding: 0;
+            outline: none;
+            font-size: 20px;
+            text-indent: 10px;
+            position: absolute;
+            border-radius: 6px;
+            right: 80px;
+            resize: none;
+           
+        }
+
+        .footer span {
+            display: inline-block;
+            width: 62px;
+            height: 48px;
+            background: #ccc;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            text-align: center;
+            position: absolute;
+            right: 10px;
+            border-radius: 6px;
+        }
+
+        .footer span:hover {
+            color: #fff;
+            background: #999;
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .chatcontent {
+            font-size: 18px;
+            /* width: 435px; */
+            height: 580px;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        /*整体部分*/
+        .chatcontent::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+        }
+
+        /*滑动轨道*/
+        .chatcontent::-webkit-scrollbar-track {
+            border-radius: 0px;
+            background: none;
+        }
+
+        /*滑块*/
+        .chatcontent::-webkit-scrollbar-thumb {
+            border-radius: 1px;
+            -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+            background-color: rgba(255, 255, 255, .75)
+        }
+
+        /*滑块效果*/
+        .chatcontent::-webkit-scrollbar-thumb:hover {
+            border-radius: 1px;
+            -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+            background-color: rgba(85, 85, 85, 0.4);
+        }
+
+        .chatcontent .l {
+            margin-top: 10px;
+            padding-left: 10px;
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .chatcontent .r {
+            margin-top: 10px;
+            padding-right: 10px;
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .chatcontent .l img {
+            float: left;
+        }
+
+        .chatcontent .r img {
+            float: right;
+        }
+
+        .chat-msg {
+            background: #7cfc00;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 6px 10px 0 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 3px #ccc;
+            position: relative;
+        }
+
+        .chatcontent .l .chat-msg {
+            float: left;
+        }
+
+        .chatcontent .r .chat-msg {
+            float: right;
+        }
+
+        .chat-msg .zz {
+            /* position: absolute; */
+            max-width: 200px;
+            white-space: normal;
+            word-break: break-all;
+            word-wrap: break-word;
+
+        }
+
+        .caret {
+            position: absolute;
+            top: 10px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-left: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid #7cfc00;
+        }
+
+        .l .caret {
+            left: -16px;
+        }
+
+        .r .caret {
+            border-left: 8px solid #7cfc00;
+            border-right: 8px solid transparent;
+            right: -16px;
+        }
+
+        /*整体部分*/
+        #text::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+        }
+
+        /*滑动轨道*/
+        #text::-webkit-scrollbar-track {
+            border-radius: 0px;
+            background: none;
+        }
+
+        /*滑块*/
+        #text::-webkit-scrollbar-thumb {
+            border-radius: 1px;
+            -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+            background-color: rgba(255, 255, 255, .75)
+        }
+
+        /*滑块效果*/
+        #text::-webkit-scrollbar-thumb:hover {
+            border-radius: 1px;
+            -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+            background-color: rgba(85, 85, 85, 0.4);
+        }
+    </style>
+
+</head>
+
+<body>
+  <audio id="audio" src="./83766.mp3" preload></audio>
+    <div id="container">
+        <div class="header">
+            <span>微信</span>
+            <span id="time">14:21</span>
+        </div>
+        <div class="chatcontent">
+            <!-- <div class="l">
+                <img src="jqi.jpg">
+                <div class="chat-msg">
+                    <i class="caret"></i>
+                    <div class="zz">Hi,有什么可以帮到您的吗</div>
+                </div>
+            </div> -->
+            <!-- <div class="r">
+                <img src="./tx.jpg">
+                <div class="chat-msg">
+                    <i class="caret"></i>
+                    <div class="zz">退下吧</div>
+                </div>
+            </div> -->
+        </div>
+        <div class="footer">
+            <!-- 添加输入内容 -->
+            <textarea id="text" type="text" placeholder="说点什么吧..."></textarea>
+            <span id="btn">发送</span>
+        </div>
+    </div>
+    <script>
+        
+        window.onload = function () {
+
+            //获取元素
+            function query(selector) {
+                return document.querySelector(selector);
+            }
+
+            //创建元素
+            function create(tagName) {
+                return document.createElement(tagName);
+            }
+
+
+            var time = query('#time');
+
+            var input = query('#text');
+
+            var send = query('#btn');
+
+            var chatcontent = query('.chatcontent');
+
+            var audio = query('audio');
+
+            function nowtimes() {
+                //获取当前时间
+                var date = new Date();
+
+                var hours = date.getHours();
+                hours = hours >= 10 ? hours : '0' + hours;
+
+                var minutes = date.getMinutes();
+                minutes = minutes >= 10 ? minutes : '0' + minutes;
+
+                var nowtime = hours + ':' + minutes;
+
+                time.innerText = nowtime;
+            }
+
+            nowtimes();
+            //刷新时间
+            setInterval(function () {
+                nowtimes();
+            }, 1000 * 30)
+
+            var w = new Worker('./chatworker.js');
+
+            //监听信息
+            w.onmessage = function (e) {
+
+                // console.log(e.data);
+                var robotDiv = create('div');
+                robotDiv.className = 'l';
+
+                var str = '';
+                //机器人第一次推送信息
+                if (Array.isArray(e.data)) {
+                    for (var i = 0; i < e.data.length; i++) {
+
+                        str += '<div>回复【' + e.data[i].key + '】' + e.data[i].value + '</div>';
+                    }
+                } else {
+                    str = e.data;
+
+                }
+
+                var html = `<img src="jqi.jpg">
+                <div class="chat-msg">
+                    <i class="caret"></i>
+                    <div class="zz">${str}</div>
+                </div>`;
+
+                robotDiv.innerHTML = html;
+
+                chatcontent.appendChild(robotDiv);
+                // scrollTop就是卷起来的部分，也就是我们随着下拉，看不见的部分。scrollHeight就是整个窗口可以滑动的高度
+                chatcontent.scrollTop = chatcontent.scrollHeight;
+                
+                audio.play();
+            }
+
+
+            //发送
+            function sendMessage() {
+                var content = input.value.trim();
+
+                if (content === '') {
+                    return;
+                }
+
+                //将消息内容发给worker文件
+                w.postMessage(content);
+
+                //我的消息
+                var div = create('div');
+
+                div.className = 'r';
+
+                var html = `<img src="./tx.jpg">
+                <div class="chat-msg">
+                    <i class="caret"></i>
+                    <div class="zz">${content}</div>
+                </div>`;
+
+                div.innerHTML = html;
+
+                chatcontent.appendChild(div);
+
+                chatcontent.scrollTop = chatcontent.scrollHeight;
+
+                input.value = '';
+            }
+
+            send.onclick = function () {
+                sendMessage();
+            }
+
+            //回车发送信息
+            input.onkeydown = function (e) {
+
+                if (e.keyCode === 13) {
+                    sendMessage();
+                    e.preventDefault();
+
+                    //失去焦点
+                    this.blur();
+                }
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
