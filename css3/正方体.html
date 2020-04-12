@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            /* background-color: #dfca54; */
+            perspective: 1000px;
+        }
+        .child-box {
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: r1 10s linear 0s infinite;
+        }
+        .child-box>div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            color: #fff;
+            font-size: 22px;
+            transition: transform .3s linear;
+            opacity: 0.55;
+        }
+        .a {
+            background-color: #ed7a8c;
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        .b {
+            background-color: #087a8c;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .c {
+            background-color: #e00a8c;
+            transform: rotateY(180deg) translateZ(100px);
+        }
+
+        .d {
+            background-color: #0d0f8c;
+            transform: rotateY(270deg) translateZ(100px);
+        }
+
+        .e {
+            background-color: #877a8c;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .f {
+            background-color: #009a8c;
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        @keyframes r1 {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="child-box">
+            <div class="a">除</div>
+            <div class="b">了</div>
+            <div class="c">吃</div>
+            <div class="d">就</div>
+            <div class="e">是</div>
+            <div class="f">睡</div>
+        </div>
+    </div>
+</body>
+
+</html>
