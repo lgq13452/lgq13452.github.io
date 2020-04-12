@@ -1,0 +1,229 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  perspective: 1000px;
+  display: flex;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom right, rgba(0, 0, 200, 0.4), rgba(150, 50, 50, 0.4));
+  font-family: 'Asar', serif;
+}
+.card {
+  background-image: url(600x600.jpg);
+  width: 400px;
+  height: 550px;
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 200px;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.card .mask {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  transition: inherit;
+}
+.card::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  transition: inherit;
+  background: rgba(0, 0, 200, 0.2);
+}
+.card::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  transition: inherit;
+  background-color: #000000;
+  transform: translateZ(-20px);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.7);
+}
+.card h2 {
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: 21px;
+  margin-bottom: 40px;
+}
+.card h3 {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 300;
+}
+.card ul {
+  display: flex;
+  justify-content: center;
+  transition: inherit;
+  color: black;
+}
+.card ul li {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  transform: rotate(30deg);
+  transform-style: preserve-3d;
+  transition: inherit;
+  position: relative;
+}
+.card ul li .li-side {
+  content: "";
+  display: block;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #b9cad7;
+  transform-origin: 0 100%;
+  transition: inherit;
+}
+.card ul li::before {
+  content: "";
+  display: block;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #b9cad7;
+  transform-origin: 0 100%;
+  transition: inherit;
+  width: 20px;
+}
+.card ul li::after {
+  content: "";
+  display: block;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #b9cad7;
+  transform-origin: 0 100%;
+  transition: inherit;
+  width: 0px;
+  transform: rotateY(-90deg) translateZ(-20px) translateY(1px);
+}
+.card ul li span {
+  width: 0px;
+  content: "";
+  display: block;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #b9cad7;
+  transition: inherit;
+  transform-origin: 0 100%;
+  transform: rotateY(-90deg) rotateX(-90deg) translateY(20px);
+  color: rgba(0, 0, 0, 0.007);
+}
+.card.active {
+  transform: rotateX(60deg) translate3d(0px, -90px, 100px);
+}
+.card.active::before {
+  background: rgba(0, 0, 255, 0.4);
+}
+.card.active ul li span {
+  color: black;
+}
+.card.active ul li:first-child::before {
+  transform: translateZ(200px);
+}
+.card.active ul li:first-child::after {
+  width: 200px;
+}
+.card.active ul li:first-child span {
+  width: 200px;
+}
+.card.active ul li:nth-child(2)::before {
+  transform: translateZ(100px);
+}
+.card.active ul li:nth-child(2)::after {
+  width: 100px;
+}
+.card.active ul li:nth-child(2) span {
+  width: 100px;
+}
+.card.active ul li:nth-child(3)::before {
+  transform: translateZ(150px);
+}
+.card.active ul li:nth-child(3)::after {
+  width: 150px;
+}
+.card.active ul li:nth-child(3) span {
+  width: 150px;
+}
+.card.active ul li:nth-child(3)::before {
+  transform: translateZ(150px);
+}
+.card.active ul li:nth-child(3)::after {
+  width: 150px;
+}
+.card.active ul li:nth-child(3) span {
+  width: 150px;
+}
+.card.active ul li:nth-child(4)::before {
+  transform: translateZ(240px);
+}
+.card.active ul li:nth-child(4)::after {
+  width: 240px;
+}
+.card.active ul li:nth-child(4) span {
+  width: 240px;
+}
+.card.active ul li:nth-child(5)::before {
+  transform: translateZ(70px);
+}
+.card.active ul li:nth-child(5)::after {
+  width: 70px;
+}
+.card.active ul li:nth-child(5) span {
+  width: 70px;
+}
+.card.active ul li:nth-child(6)::before {
+  transform: translateZ(70px);
+}
+.card.active ul li:nth-child(6)::after {
+  width: 70px;
+}
+.card.active ul li:nth-child(6) span {
+  width: 70px;
+}
+.card.active ul li:nth-child(7)::before {
+  transform: translateZ(100px);
+}
+.card.active ul li:nth-child(7)::after {
+  width: 100px;
+}
+.card.active ul li:nth-child(7) span {
+  width: 100px;
+}
+/*# sourceMappingURL=./card.css.map */
