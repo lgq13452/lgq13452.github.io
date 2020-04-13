@@ -734,7 +734,7 @@ $(function () {
     //发起ajax请求
     $.ajax({
       type: 'GET',
-      url: 'http://music.kele8.cn/top/song?type=7',
+      url: 'https://music.kele8.cn/top/song?type=7',
       //请求参数
       // data: {
       //   id: 141998290,
