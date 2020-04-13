@@ -249,7 +249,7 @@ $(function () {
   }
 
   //获取歌词
-  // http://music.kele8.cn/lyric?id=33894312
+  // https://music.kele8.cn/lyric?id=33894312
   function getSongWord(url) {
     $.ajax({
       type: 'get',
