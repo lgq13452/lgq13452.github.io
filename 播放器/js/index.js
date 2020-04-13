@@ -226,13 +226,22 @@ $(function () {
 
 
   // 时间格式化
-  function formatTime(sec) {
+  function formatTime(sec,type) {
     //sec: 秒数
     //不足10，需要补零
-    var minute = Math.floor(sec / 60);
+    if(type == 1){
+      var minute = Math.floor(sec / 1000 / 60);
+    var second = Math.floor(sec /1000 % 60);
+
+    }
+    if(type == 2){
+      var minute = Math.floor(sec / 60);
+      var second = Math.floor(sec % 60);
+
+    }
+
     minute = minute >= 10 ? minute : '0' + minute;
 
-    var second = Math.floor(sec % 60);
 
     second = second >= 10 ? second : '0' + second;
 
@@ -240,13 +249,14 @@ $(function () {
   }
 
   //获取歌词
+  // http://music.kele8.cn/lyric?id=33894312
   function getSongWord(url) {
     $.ajax({
       type: 'get',
       url: url,
       success: function (data) {
-        console.log('data ==> ', data);
-        var lrcData = data.split('\n[');
+        // console.log('data ==> ', data.lrc.lyric);
+        var lrcData = data.lrc.lyric.split('\n[');
         // console.log(lrcData);
         for (var i = 0; i < lrcData.length; i++) {
 
@@ -293,7 +303,8 @@ $(function () {
       console.log('duration ==> ', duration);
       isFirstPlay = false;
 
-      var t = formatTime(duration);
+      var t = formatTime(duration,2);
+      
       $('#du').text(t);
 
       //获取最近播放歌曲
@@ -375,7 +386,7 @@ $(function () {
     //获取音频当前播放时间
     var currentTime = this.currentTime;
 
-    var ct = formatTime(currentTime);
+    var ct = formatTime(currentTime,2);
 
     $('#cu').text(ct);
 
@@ -683,15 +694,17 @@ $(function () {
         }
       })
 
-
-      $item = $(`<div id="${this.id}" class="default-list-item" data-url="${this.url}" data-lrc="${this.lrc}" data-songid="${this.id}">
+      // https://music.163.com/song/media/outer/url?id=id.mp3
+      // http://music.kele8.cn/lyric?id=33894312
+      // console.log(this.bMusic.playTime)
+      $item = $(`<div id="${this.id}" class="default-list-item" data-url="https://music.163.com/song/media/outer/url?id=${this.id}.mp3" data-lrc="http://music.kele8.cn/lyric?id=${this.id}" data-songid="${this.id}">
         <div class="song-info">
-            <div class="singer-name">${this.singer}-${this.name}</div>
+            <div class="singer-name">${this.artists[0].name}-${this.name}</div>
             <img class="mylike ${dataIndex == 'likeSong' ? 'not' : ''}" data-like="${isHas ? 1 : 0}" src="./images/${isHas ? 'like_active' : 'like'}.png" >  
             
             <img class="delete ${dataIndex == 'default-list' ? 'not' : ''}" src="./images/delete.png" > 
 
-            <div class="song-time">${formatTime(this.time)}</div>
+            <div class="song-time">${formatTime(this.bMusic.playTime,1)}</div>
 
         </div>
     </div>`);
@@ -721,12 +734,12 @@ $(function () {
     //发起ajax请求
     $.ajax({
       type: 'GET',
-      url: 'https://v1.itooi.cn/netease/songList',
+      url: 'http://music.kele8.cn/top/song?type=7',
       //请求参数
-      data: {
-        id: 141998290,
-        format: 1
-      },
+      // data: {
+      //   id: 141998290,
+      //   format: 1
+      // },
       //请求成功后执行回调函数
       success: function (data) {
         // console.log('data ==>', data);
@@ -1078,12 +1091,12 @@ $(function () {
 
         //实时更新我的歌单
         if (!$('#likeSong').is(':hidden')) {
-          $item = $(`<div id="${this.id}" class="default-list-item" data-url="${this.url}" data-lrc="${this.lrc}" data-songid="${this.id}">
+          $item = $(`<div id="${this.id}" class="default-list-item" data-url="https://music.163.com/song/media/outer/url?id=${this.id}.mp3" data-lrc="${this.lrc}" data-songid="${this.id}">
           <div class="song-info">
               <div class="singer-name">${this.singer}-${this.name}</div>
               <img class="mylike not" data-like="1" src="./images/like_active.png" >      
               <img class="delete" src="./images/delete.png" > 
-              <div class="song-time">${formatTime(this.time)}</div>
+              <div class="song-time">${formatTime(this.bMusic.playTime,1)}</div>
           </div>
         
           </div>`);
