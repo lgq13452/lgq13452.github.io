@@ -697,7 +697,7 @@ $(function () {
       // https://music.163.com/song/media/outer/url?id=id.mp3
       // http://music.kele8.cn/lyric?id=33894312
       // console.log(this.bMusic.playTime)
-      $item = $(`<div id="${this.id}" class="default-list-item" data-url="https://music.163.com/song/media/outer/url?id=${this.id}.mp3" data-lrc="http://music.kele8.cn/lyric?id=${this.id}" data-songid="${this.id}">
+      $item = $(`<div id="${this.id}" class="default-list-item" data-url="https://music.163.com/song/media/outer/url?id=${this.id}.mp3" data-lrc="https://music.kele8.cn/lyric?id=${this.id}" data-songid="${this.id}">
         <div class="song-info">
             <div class="singer-name">${this.artists[0].name}-${this.name}</div>
             <img class="mylike ${dataIndex == 'likeSong' ? 'not' : ''}" data-like="${isHas ? 1 : 0}" src="./images/${isHas ? 'like_active' : 'like'}.png" >  
