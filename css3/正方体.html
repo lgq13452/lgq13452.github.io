@@ -7,14 +7,11 @@
     <title>Document</title>
     <style>
         .box {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 200px;
-            height: 200px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
             /* background-color: #dfca54; */
             perspective: 1000px;
         }
@@ -23,6 +20,7 @@
             position: relative;
             transform-style: preserve-3d;
             animation: r1 10s linear 0s infinite;
+            margin-left: 200px;
         }
         .child-box>div {
             position: absolute;
@@ -37,31 +35,31 @@
             transition: transform .3s linear;
             opacity: 0.55;
         }
-        .a {
+        .child-box .a {
             background-color: #ed7a8c;
             transform: rotateY(0deg) translateZ(100px);
         }
-        .b {
+        .child-box .b {
             background-color: #087a8c;
             transform: rotateY(90deg) translateZ(100px);
         }
 
-        .c {
+        .child-box .c {
             background-color: #e00a8c;
             transform: rotateY(180deg) translateZ(100px);
         }
 
-        .d {
+        .child-box .d {
             background-color: #0d0f8c;
             transform: rotateY(270deg) translateZ(100px);
         }
 
-        .e {
+        .child-box .e {
             background-color: #877a8c;
             transform: rotateX(90deg) translateZ(100px);
         }
 
-        .f {
+        .child-box .f {
             background-color: #009a8c;
             transform: rotateX(-90deg) translateZ(100px);
         }
@@ -75,12 +73,107 @@
                 transform: rotateX(360deg) rotateZ(360deg);
             }
         }
+
+        .child-box2 {
+            height: 200px;
+            position: relative;
+            /* transform: rotateX(-45deg) rotateY(30deg); */
+            transform: rotateY(0deg);
+            transform-style: preserve-3d;
+            animation: r2 10s linear 0s infinite;
+            margin-right: 200px;
+        }
+
+        .child-box2>div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            color: #fff;
+            font-size: 22px;
+            transition: transform .3s linear;
+        }
+
+        .child-box2 .a {
+            background-color: #ed7a8c;
+            transform: rotateY(0deg) translateZ(100px);
+        }
+
+        .child-box2 .b {
+            background-color: #087a8c;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .child-box2 .c {
+            background-color: #e00a8c;
+            transform: rotateY(180deg) translateZ(100px);
+        }
+
+        .child-box2 .d {
+            background-color: #0d0f8c;
+            transform: rotateY(270deg) translateZ(100px);
+        }
+
+        .child-box2 .e {
+            background-color: #877a8c;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .child-box2 .f {
+            background-color: #009a8c;
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        .child-box2:hover .a {
+            transform: rotateY(0deg) translateZ(170px);
+        }
+
+        .child-box2:hover .b {
+            transform: rotateY(90deg) translateZ(170px);
+        }
+
+        .child-box2:hover .c {
+            transform: rotateY(180deg) translateZ(170px);
+        }
+
+        .child-box2:hover .d {
+            transform: rotateY(270deg) translateZ(170px);
+        }
+
+        .child-box2:hover .e {
+            transform: rotateX(90deg) translateZ(170px);
+        }
+
+        .child-box2:hover .f {
+            transform: rotateX(-90deg) translateZ(170px);
+        }
+
+        @keyframes r2 {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="box">
         <div class="child-box">
+            <div class="a">除</div>
+            <div class="b">了</div>
+            <div class="c">吃</div>
+            <div class="d">就</div>
+            <div class="e">是</div>
+            <div class="f">睡</div>
+        </div>
+        <div class="child-box2">
             <div class="a">除</div>
             <div class="b">了</div>
             <div class="c">吃</div>
